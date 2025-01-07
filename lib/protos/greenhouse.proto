@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package greenhouse;
+
+message DeviceRegistration{
+  string name = 1;
+  string type = 2;
+  int32 port = 3;
+}
+
+message ResponseRegistration{
+    string status = 1;
+    string device = 2;
+}
+
+message Command{
+  string command = 1;
+  string name = 2;
+  float value = 3;
+  float basevalue = 4;
+}
+
+message DeviceStatus {
+  string device = 1;
+  string feature = 2;
+  string actuator = 3;
+  bool on = 4;
+  string status = 7;
+  float value = 5;
+  string unit = 6;
+}
+
+message Response {
+  string response = 1;
+  repeated DeviceStatus device_status = 2;
+}
