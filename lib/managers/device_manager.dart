@@ -29,5 +29,20 @@ class DeviceManager extends ChangeNotifier {
   }
 
   void initialize(){
+    sensores = [
+      Sensor(id: '1', name: 'Sensor de Temperatura', status: 'Active'),
+      Sensor(id: '2', name: 'Sensor de Umidade', status: 'Inactive'),
+      Sensor(id: '3', name: 'Sensor de Luz', status: 'Active')
+    ];
+
+    atuadores = [
+      Atuador(id: '1', name: 'Atuador de Irrigação', state: 'Off'),
+      Atuador(id: '2', name: 'Atuador de Resfriamento', state: 'Off'),
+      Atuador(id: '3', name: 'Atuador de Aquecimento', state: 'Off'),
+      Atuador(id: '4', name: 'Atuador de Lâmpada', state: 'Off'),
+      Atuador(id: '5', name: 'Atuador de Curtina', state: 'Off')
+    ];
+
+    notifyListeners();
   }
 }

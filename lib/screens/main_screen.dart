@@ -10,6 +10,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final manager = Provider.of<DeviceManager>(context);
     return Scaffold(
+      backgroundColor: Colors.amber,
       appBar: AppBar(title: Text('Sensores e Atuadores')),
       body: Column(
         children: [
