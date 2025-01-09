@@ -49,35 +49,33 @@ const Command$json = {
     {'1': 'command', '3': 1, '4': 1, '5': 9, '10': 'command'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     {'1': 'value', '3': 3, '4': 1, '5': 2, '10': 'value'},
-    {'1': 'basevalue', '3': 4, '4': 1, '5': 2, '10': 'basevalue'},
   ],
 };
 
 /// Descriptor for `Command`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List commandDescriptor = $convert.base64Decode(
     'CgdDb21tYW5kEhgKB2NvbW1hbmQYASABKAlSB2NvbW1hbmQSEgoEbmFtZRgCIAEoCVIEbmFtZR'
-    'IUCgV2YWx1ZRgDIAEoAlIFdmFsdWUSHAoJYmFzZXZhbHVlGAQgASgCUgliYXNldmFsdWU=');
+    'IUCgV2YWx1ZRgDIAEoAlIFdmFsdWU=');
 
 @$core.Deprecated('Use deviceStatusDescriptor instead')
 const DeviceStatus$json = {
   '1': 'DeviceStatus',
   '2': [
-    {'1': 'device', '3': 1, '4': 1, '5': 9, '10': 'device'},
-    {'1': 'feature', '3': 2, '4': 1, '5': 9, '10': 'feature'},
-    {'1': 'actuator', '3': 3, '4': 1, '5': 9, '10': 'actuator'},
+    {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
+    {'1': 'type', '3': 2, '4': 1, '5': 9, '10': 'type'},
+    {'1': 'feature', '3': 3, '4': 1, '5': 9, '10': 'feature'},
     {'1': 'on', '3': 4, '4': 1, '5': 8, '10': 'on'},
-    {'1': 'status', '3': 7, '4': 1, '5': 9, '10': 'status'},
-    {'1': 'value', '3': 5, '4': 1, '5': 2, '10': 'value'},
-    {'1': 'unit', '3': 6, '4': 1, '5': 9, '10': 'unit'},
+    {'1': 'status', '3': 5, '4': 1, '5': 9, '10': 'status'},
+    {'1': 'value', '3': 6, '4': 1, '5': 2, '10': 'value'},
+    {'1': 'unit', '3': 7, '4': 1, '5': 9, '10': 'unit'},
   ],
 };
 
 /// Descriptor for `DeviceStatus`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List deviceStatusDescriptor = $convert.base64Decode(
-    'CgxEZXZpY2VTdGF0dXMSFgoGZGV2aWNlGAEgASgJUgZkZXZpY2USGAoHZmVhdHVyZRgCIAEoCV'
-    'IHZmVhdHVyZRIaCghhY3R1YXRvchgDIAEoCVIIYWN0dWF0b3ISDgoCb24YBCABKAhSAm9uEhYK'
-    'BnN0YXR1cxgHIAEoCVIGc3RhdHVzEhQKBXZhbHVlGAUgASgCUgV2YWx1ZRISCgR1bml0GAYgAS'
-    'gJUgR1bml0');
+    'CgxEZXZpY2VTdGF0dXMSEgoEbmFtZRgBIAEoCVIEbmFtZRISCgR0eXBlGAIgASgJUgR0eXBlEh'
+    'gKB2ZlYXR1cmUYAyABKAlSB2ZlYXR1cmUSDgoCb24YBCABKAhSAm9uEhYKBnN0YXR1cxgFIAEo'
+    'CVIGc3RhdHVzEhQKBXZhbHVlGAYgASgCUgV2YWx1ZRISCgR1bml0GAcgASgJUgR1bml0');
 
 @$core.Deprecated('Use responseDescriptor instead')
 const Response$json = {

@@ -160,7 +160,6 @@ class Command extends $pb.GeneratedMessage {
     $core.String? command,
     $core.String? name,
     $core.double? value,
-    $core.double? basevalue,
   }) {
     final $result = create();
     if (command != null) {
@@ -172,9 +171,6 @@ class Command extends $pb.GeneratedMessage {
     if (value != null) {
       $result.value = value;
     }
-    if (basevalue != null) {
-      $result.basevalue = basevalue;
-    }
     return $result;
   }
   Command._() : super();
@@ -185,7 +181,6 @@ class Command extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'command')
     ..aOS(2, _omitFieldNames ? '' : 'name')
     ..a<$core.double>(3, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OF)
-    ..a<$core.double>(4, _omitFieldNames ? '' : 'basevalue', $pb.PbFieldType.OF)
     ..hasRequiredFields = false
   ;
 
@@ -236,48 +231,39 @@ class Command extends $pb.GeneratedMessage {
   $core.bool hasValue() => $_has(2);
   @$pb.TagNumber(3)
   void clearValue() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.double get basevalue => $_getN(3);
-  @$pb.TagNumber(4)
-  set basevalue($core.double v) { $_setFloat(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasBasevalue() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearBasevalue() => clearField(4);
 }
 
 class DeviceStatus extends $pb.GeneratedMessage {
   factory DeviceStatus({
-    $core.String? device,
+    $core.String? name,
+    $core.String? type,
     $core.String? feature,
-    $core.String? actuator,
     $core.bool? on,
+    $core.String? status,
     $core.double? value,
     $core.String? unit,
-    $core.String? status,
   }) {
     final $result = create();
-    if (device != null) {
-      $result.device = device;
+    if (name != null) {
+      $result.name = name;
+    }
+    if (type != null) {
+      $result.type = type;
     }
     if (feature != null) {
       $result.feature = feature;
     }
-    if (actuator != null) {
-      $result.actuator = actuator;
-    }
     if (on != null) {
       $result.on = on;
+    }
+    if (status != null) {
+      $result.status = status;
     }
     if (value != null) {
       $result.value = value;
     }
     if (unit != null) {
       $result.unit = unit;
-    }
-    if (status != null) {
-      $result.status = status;
     }
     return $result;
   }
@@ -286,13 +272,13 @@ class DeviceStatus extends $pb.GeneratedMessage {
   factory DeviceStatus.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeviceStatus', package: const $pb.PackageName(_omitMessageNames ? '' : 'greenhouse'), createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'device')
-    ..aOS(2, _omitFieldNames ? '' : 'feature')
-    ..aOS(3, _omitFieldNames ? '' : 'actuator')
+    ..aOS(1, _omitFieldNames ? '' : 'name')
+    ..aOS(2, _omitFieldNames ? '' : 'type')
+    ..aOS(3, _omitFieldNames ? '' : 'feature')
     ..aOB(4, _omitFieldNames ? '' : 'on')
-    ..a<$core.double>(5, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OF)
-    ..aOS(6, _omitFieldNames ? '' : 'unit')
-    ..aOS(7, _omitFieldNames ? '' : 'status')
+    ..aOS(5, _omitFieldNames ? '' : 'status')
+    ..a<$core.double>(6, _omitFieldNames ? '' : 'value', $pb.PbFieldType.OF)
+    ..aOS(7, _omitFieldNames ? '' : 'unit')
     ..hasRequiredFields = false
   ;
 
@@ -318,31 +304,31 @@ class DeviceStatus extends $pb.GeneratedMessage {
   static DeviceStatus? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.String get device => $_getSZ(0);
+  $core.String get name => $_getSZ(0);
   @$pb.TagNumber(1)
-  set device($core.String v) { $_setString(0, v); }
+  set name($core.String v) { $_setString(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasDevice() => $_has(0);
+  $core.bool hasName() => $_has(0);
   @$pb.TagNumber(1)
-  void clearDevice() => clearField(1);
+  void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get feature => $_getSZ(1);
+  $core.String get type => $_getSZ(1);
   @$pb.TagNumber(2)
-  set feature($core.String v) { $_setString(1, v); }
+  set type($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasFeature() => $_has(1);
+  $core.bool hasType() => $_has(1);
   @$pb.TagNumber(2)
-  void clearFeature() => clearField(2);
+  void clearType() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get actuator => $_getSZ(2);
+  $core.String get feature => $_getSZ(2);
   @$pb.TagNumber(3)
-  set actuator($core.String v) { $_setString(2, v); }
+  set feature($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasActuator() => $_has(2);
+  $core.bool hasFeature() => $_has(2);
   @$pb.TagNumber(3)
-  void clearActuator() => clearField(3);
+  void clearFeature() => clearField(3);
 
   @$pb.TagNumber(4)
   $core.bool get on => $_getBF(3);
@@ -354,31 +340,31 @@ class DeviceStatus extends $pb.GeneratedMessage {
   void clearOn() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.double get value => $_getN(4);
+  $core.String get status => $_getSZ(4);
   @$pb.TagNumber(5)
-  set value($core.double v) { $_setFloat(4, v); }
+  set status($core.String v) { $_setString(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasValue() => $_has(4);
+  $core.bool hasStatus() => $_has(4);
   @$pb.TagNumber(5)
-  void clearValue() => clearField(5);
+  void clearStatus() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get unit => $_getSZ(5);
+  $core.double get value => $_getN(5);
   @$pb.TagNumber(6)
-  set unit($core.String v) { $_setString(5, v); }
+  set value($core.double v) { $_setFloat(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasUnit() => $_has(5);
+  $core.bool hasValue() => $_has(5);
   @$pb.TagNumber(6)
-  void clearUnit() => clearField(6);
+  void clearValue() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.String get status => $_getSZ(6);
+  $core.String get unit => $_getSZ(6);
   @$pb.TagNumber(7)
-  set status($core.String v) { $_setString(6, v); }
+  set unit($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasStatus() => $_has(6);
+  $core.bool hasUnit() => $_has(6);
   @$pb.TagNumber(7)
-  void clearStatus() => clearField(7);
+  void clearUnit() => clearField(7);
 }
 
 class Response extends $pb.GeneratedMessage {

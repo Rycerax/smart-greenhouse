@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:grpc/grpc_web.dart';
 import 'package:provider/provider.dart';
-import 'package:smart_greenhouse/atuador.dart';
 import 'package:smart_greenhouse/managers/device_manager.dart';
+import 'package:smart_greenhouse/protos/greenhouse.pb.dart';
+import 'package:smart_greenhouse/socket_client.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
+  
+
 
   @override
   Widget build(BuildContext context) {
     final manager = Provider.of<DeviceManager>(context);
+
+    final client = SocketClient(host: '127.0.0.1', port: 50000);
+
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(title: Text('Sensores e Atuadores')),
