@@ -1,6 +1,6 @@
 //
 //  Generated code. Do not modify.
-//  source: lib/protos/greenhouse.proto
+//  source: smart-greenhouse/lib/protos/greenhouse.proto
 //
 // @dart = 2.12
 

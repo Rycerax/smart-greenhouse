@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -21,8 +20,9 @@ class SocketClient {
       print('Mensagem enviada: $cmd');
 
       socket.listen((List<int> data) {
-        final response = Response.fromBuffer((Uint8List.fromList(data)));
-        print('Tamnanho da resposta recebida: ${response.deviceStatus.length}');
+        print(data);
+        final response = DeviceStatus.fromBuffer((Uint8List.fromList(data)));
+        print('Tamanho da resposta recebida: $response');
       });
 
       await socket.flush();
