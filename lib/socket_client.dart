@@ -1,6 +1,5 @@
+import 'dart:async';
 import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:smart_greenhouse/protos/greenhouse.pb.dart';
 
 class SocketClient {
@@ -9,26 +8,54 @@ class SocketClient {
 
   SocketClient({required this.host, required this.port});
 
-  Future<void> receiveData(Command cmd) async {
+  Future<List<DeviceStatus>> receiveData(Command cmd) async {
+    final Completer<List<DeviceStatus>> completer = Completer();
+    List<DeviceStatus> res = [];
+
     try {
+      // Conecta ao servidor
       final socket = await Socket.connect(host, port);
       print('Conectado ao servidor: $host:$port');
 
+      // Serializar e enviar o comando
       final serializedData = cmd.writeToBuffer();
-
       socket.add(serializedData);
       print('Mensagem enviada: $cmd');
 
-      socket.listen((List<int> data) {
-        print(data);
-        final response = DeviceStatus.fromBuffer((Uint8List.fromList(data)));
-        print('Tamanho da resposta recebida: $response');
-      });
+      // Escutar a resposta do servidor
+      socket.listen(
+        (List<int> data) {
+          try {
+            // Desserializar a resposta
+            final response = Response.fromBuffer(data);
+            res =
+                response.deviceStatus; // Supondo que "deviceStatus" é uma lista
+            print('Resposta recebida: $res');
 
-      await socket.flush();
-      socket.destroy();
+            // Resolver o completer com os dados
+            completer.complete(res);
+          } catch (e) {
+            print('Erro ao desserializar os dados: $e');
+            completer.completeError(e);
+          }
+        },
+        onDone: () async {
+          // Fechar o socket quando os dados forem processados
+          await socket.flush();
+          socket.destroy();
+        },
+        onError: (error) {
+          print('Erro no socket: $error');
+          completer.completeError(error);
+          socket.destroy();
+        },
+      );
     } catch (e) {
       print('Erro na comunicação com o servidor: $e');
+      completer.completeError(e);
     }
+
+    // Aguarda o completer ser resolvido
+    return completer.future;
   }
 }

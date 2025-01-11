@@ -5,7 +5,7 @@ import 'package:smart_greenhouse/screens/main_screen.dart';
 
 void main() {
   final deviceManager = DeviceManager();
-  deviceManager.initialize();
+  // deviceManager.initialize();
   print(deviceManager.sensores);
   runApp(ChangeNotifierProvider(create: (_) => deviceManager, child: MyApp()));
 }
