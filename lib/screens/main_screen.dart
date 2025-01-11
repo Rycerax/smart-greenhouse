@@ -16,60 +16,11 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final client = SocketClient(host: '34.227.14.119', port: 50002);
-  Timer? _timer;
   DeviceManager? manager;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 5), (_) {
-      Command cmd = Command(command: 'GET');
-
-      client.receiveData(cmd).then((lst) {
-        // Criar listas de sensores e atuadores a partir de DeviceStatus
-        List<Sensor> sen =
-            lst
-                .where(
-                  (device) => device.type == 'Sensor',
-                ) // Filtrar apenas sensores
-                .map(
-                  (device) => Sensor(
-                    id: device.name,
-                    name: device.name,
-                    status: device.status,
-                    value:
-                        '${device.value.toStringAsPrecision(4)} ${device.unit}',
-                  ),
-                )
-                .toList();
-
-        List<Atuador> atu =
-            lst
-                .where(
-                  (device) => device.type == 'Actuator',
-                ) // Filtrar apenas atuadores
-                .map(
-                  (device) => Atuador(
-                    id: device.name,
-                    name: device.name,
-                    state: device.status,
-                    unit: device.unit,
-                  ),
-                )
-                .toList();
-
-        // Atualizar o DeviceManager
-        manager?.updateSensores(sen);
-        manager?.updateAtuadores(atu);
-      });
-    });
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    _timer?.cancel();
-    super.dispose();
   }
 
   @override
@@ -92,6 +43,53 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                 );
               },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                Command cmd = Command(command: 'GET');
+
+                client.receiveData(cmd).then((lst) {
+                  // Criar listas de sensores e atuadores a partir de DeviceStatus
+                  List<Sensor> sen =
+                      lst
+                          .where(
+                            (device) => device.type == 'Sensor',
+                          ) // Filtrar apenas sensores
+                          .map(
+                            (device) => Sensor(
+                              id: device.name,
+                              name: device.name,
+                              status: device.status,
+                              value:
+                                  '${device.value.toStringAsPrecision(4)} ${device.unit}',
+                            ),
+                          )
+                          .toList();
+
+                  List<Atuador> atu =
+                      lst
+                          .where(
+                            (device) => device.type == 'Actuator',
+                          ) // Filtrar apenas atuadores
+                          .map(
+                            (device) => Atuador(
+                              id: device.name,
+                              name: device.name,
+                              state: device.status,
+                              unit: device.unit,
+                            ),
+                          )
+                          .toList();
+
+                  // Atualizar o DeviceManager
+                  manager?.updateSensores(sen);
+                  manager?.updateAtuadores(atu);
+                });
+              },
+              child: Text('Update Info'),
             ),
           ),
           Expanded(
