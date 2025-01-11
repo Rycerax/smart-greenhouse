@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_greenhouse/atuador.dart';
@@ -15,7 +14,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final client = SocketClient(host: '34.227.14.119', port: 50002);
+  final client = SocketClient(host: '3.84.236.207', port: 50002);
   DeviceManager? manager;
   @override
   void initState() {
